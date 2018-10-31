@@ -7,6 +7,8 @@ import android.os.Bundle;
 
 public class SplashScreen extends AppCompatActivity {
 
+
+    //kung ilang interval ng splash screen bago mag redirect sa home
     private static int SPLASH_TIME_OUT = 4000;
  
     @Override
@@ -22,6 +24,7 @@ public class SplashScreen extends AppCompatActivity {
                 Intent homeIntent = new Intent(SplashScreen.this, HomeActivity.class);
                 startActivity(homeIntent);
                 finish();
+
 
             }
         },SPLASH_TIME_OUT);
