@@ -18,6 +18,8 @@
         </activity>
         <service android:name=".YummersService"></service>
         <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".DisplayRecipes"></activity>
+
     </application>
 
 </manifest>

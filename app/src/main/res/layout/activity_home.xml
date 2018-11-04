@@ -35,6 +35,7 @@
                 android:id="@+id/japanese"
                 android:layout_width="390dp"
                 android:layout_height="281dp"
+                android:onClick="process"
                 app:srcCompat="@drawable/japanese"
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="0dp" />
@@ -43,12 +44,14 @@
                 android:id="@+id/italian"
                 android:layout_width="390dp"
                 android:layout_height="281dp"
+                android:onClick="process"
                 app:srcCompat="@drawable/italian" />
 
             <ImageButton
                 android:id="@+id/filipino"
                 android:layout_width="390dp"
                 android:layout_height="281dp"
+                android:onClick="process"
                 app:srcCompat="@drawable/filipino" />
         </LinearLayout>
     </ScrollView>
