@@ -9,7 +9,7 @@ public class SplashScreen extends AppCompatActivity {
 
 
     //kung ilang interval ng splash screen bago mag redirect sa home
-    private static int SPLASH_TIME_OUT = 4000;
+    private static int SPLASH_TIME_OUT = 2000;
  
     @Override
     protected void onCreate(Bundle savedInstanceState) {
