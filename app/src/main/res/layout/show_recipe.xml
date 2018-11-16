@@ -6,6 +6,63 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/food_category"
+        app:layout_constraintVertical_bias="1.0">
+
+        <ImageButton
+            android:id="@+id/list"
+            android:layout_width="72dp"
+            android:layout_height="54dp"
+            android:background="?android:selectableItemBackground"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.273"
+            app:layout_constraintStart_toEndOf="@+id/search"
+            app:layout_constraintTop_toBottomOf="@+id/scrollView"
+            app:srcCompat="@drawable/list" />
+
+        <ImageButton
+            android:id="@+id/home"
+            android:layout_width="72dp"
+            android:layout_height="54dp"
+            android:background="?android:selectableItemBackground"
+            android:cropToPadding="false"
+            android:onClick="process"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/search"
+            app:layout_constraintHorizontal_bias="0.767"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scrollView"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/home_icon" />
+
+        <ImageButton
+            android:id="@+id/search"
+            android:layout_width="72dp"
+            android:layout_height="54dp"
+            android:background="?android:selectableItemBackground"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/list"
+            app:layout_constraintStart_toEndOf="@+id/home"
+            app:layout_constraintTop_toBottomOf="@+id/scrollView"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/search_icon" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
     <TextView
         android:id="@+id/food_name"
         android:layout_width="wrap_content"
@@ -25,12 +82,11 @@
 
     <ListView
         android:id="@+id/ingredientsList"
-        android:layout_width="368dp"
+        android:layout_width="match_parent"
         android:layout_height="343dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.572" />
 
