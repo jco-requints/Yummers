@@ -8,12 +8,15 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 public class DisplayRecipes extends AppCompatActivity {
 
     ListView list;
+    ImageView image;
+    TextView text;
     Integer[] japan_images = {R.drawable.teriyaki, R.drawable.sushi, R.drawable.tempura, R.drawable.sashimi};
     Integer[] italian_images = {R.drawable.pizza, R.drawable.spaghetti, R.drawable.lasagna, R.drawable.risotto};
     Integer[] filipino_images = {R.drawable.sinigang, R.drawable.sisig, R.drawable.adobo, R.drawable.nilaga};
@@ -39,10 +42,14 @@ public class DisplayRecipes extends AppCompatActivity {
             textViewToChange.setText(str);
         }
 
-
         String foodCategory = textViewToChange.getText().toString();
         if(foodCategory.equals("Japanese")){
             setContentView(R.layout.display_recipes);
+            image = findViewById(R.id.category);
+            image.setImageResource(R.drawable.japanese_category);
+            //code to display food category
+            text = findViewById(R.id.food_category);
+            text.setText(foodCategory);
 
             CustomListAdapter adapter=new CustomListAdapter(this, JAPANESE, japan_images);
             list= findViewById(R.id.LIST);
@@ -63,6 +70,11 @@ public class DisplayRecipes extends AppCompatActivity {
         }
         else if(foodCategory.equals("Italian")){
             setContentView(R.layout.display_recipes);
+            image = findViewById(R.id.category);
+            image.setImageResource(R.drawable.italian_category);
+            //code to display food category
+            text = findViewById(R.id.food_category);
+            text.setText(foodCategory);
 
             CustomListAdapter adapter=new CustomListAdapter(this, ITALIAN, italian_images);
             list = findViewById(R.id.LIST);
@@ -83,6 +95,11 @@ public class DisplayRecipes extends AppCompatActivity {
         }
         else if(foodCategory.equals("Filipino")){
             setContentView(R.layout.display_recipes);
+            image = findViewById(R.id.category);
+            image.setImageResource(R.drawable.filipino_category);
+            //code to display food category
+            text = findViewById(R.id.food_category);
+            text.setText(foodCategory);
 
             CustomListAdapter adapter=new CustomListAdapter(this, FILIPINO, filipino_images);
             list = findViewById(R.id.LIST);
