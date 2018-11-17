@@ -11,11 +11,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/food_category"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/LIST"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.112" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout2"
@@ -30,10 +29,11 @@
         app:layout_constraintVertical_bias="1.0">
 
         <ImageButton
-            android:id="@+id/list"
+            android:id="@+id/shopping_list"
             android:layout_width="72dp"
             android:layout_height="54dp"
             android:background="?android:selectableItemBackground"
+            android:onClick="process"
             android:scaleType="centerInside"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -65,7 +65,7 @@
             android:background="?android:selectableItemBackground"
             android:scaleType="centerInside"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/list"
+            app:layout_constraintEnd_toStartOf="@+id/shopping_list"
             app:layout_constraintStart_toEndOf="@+id/home"
             app:layout_constraintTop_toBottomOf="@+id/scrollView"
             app:layout_constraintVertical_bias="0.0"
@@ -75,12 +75,23 @@
     </android.support.constraint.ConstraintLayout>
 
     <ListView
-        android:id="@+id/foodList"
-        android:layout_width="match_parent"
-        android:layout_height="367dp"
-        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout2"
+        android:id="@+id/LIST"
+        android:layout_width="392dp"
+        android:layout_height="476dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.58" />
+        app:layout_constraintTop_toBottomOf="@+id/food_category"></ListView>
+
+    <!--<ListView-->
+    <!--android:id="@+id/foodList"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="367dp"-->
+    <!--app:layout_constraintBottom_toBottomOf="@+id/constraintLayout2"-->
+    <!--app:layout_constraintEnd_toEndOf="parent"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toTopOf="parent"-->
+    <!--app:layout_constraintVertical_bias="0.58" />-->
 </android.support.constraint.ConstraintLayout>

@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashScreen">
+        <activity android:name=".SplashScreen" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,9 +17,10 @@
             </intent-filter>
         </activity>
         <service android:name=".YummersService"></service>
-        <activity android:name=".HomeActivity"></activity>
-        <activity android:name=".DisplayRecipes"></activity>
-        <activity android:name=".ShowRecipe"></activity>
+        <activity android:name=".HomeActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".DisplayRecipes" android:screenOrientation="portrait"></activity>
+        <activity android:name=".ShowRecipe" android:screenOrientation="portrait"></activity>
+        <activity android:name=".ShoppingList" android:screenOrientation="portrait"></activity>
 
     </application>
 

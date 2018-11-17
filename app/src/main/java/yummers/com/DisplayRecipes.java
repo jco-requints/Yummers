@@ -13,11 +13,14 @@ import android.widget.TextView;
 
 public class DisplayRecipes extends AppCompatActivity {
 
-    int[] IMAGES = {};
+    ListView list;
+    Integer[] japan_images = {R.drawable.teriyaki, R.drawable.sushi, R.drawable.tempura, R.drawable.sashimi};
+    Integer[] italian_images = {R.drawable.pizza, R.drawable.spaghetti, R.drawable.lasagna, R.drawable.risotto};
+    Integer[] filipino_images = {R.drawable.sinigang, R.drawable.sisig, R.drawable.adobo, R.drawable.nilaga};
 
     String[] JAPANESE = {"Chicken Teriyaki", "Sushi Roll", "Tempura", "Sashimi"};
-    String[] ITALIAN = {"Pizza", "Spaghetti", "Lasagna", "Risotto", "Gelato"};
-    String[] FILIPINO = {"Sinigang na Baboy", "Pork Sisig", "Chicken Adobo", "Crispy Pata", "Nilagang Baka"};
+    String[] ITALIAN = {"Pizza", "Spaghetti", "Lasagna", "Risotto"};
+    String[] FILIPINO = {"Sinigang na Baboy", "Pork Sisig", "Chicken Adobo", "Nilagang Baka"};
 
 
 
@@ -30,58 +33,69 @@ public class DisplayRecipes extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
 
         //code for the text if japanese, italian or filipino food...
-        TextView textViewToChange = (TextView) findViewById(R.id.food_category);
+        TextView textViewToChange = findViewById(R.id.food_category);
         if (extras != null) {
             String str = extras.getString("category");
             textViewToChange.setText(str);
         }
 
 
-        final ListView listView = (ListView)findViewById(R.id.foodList);
         String foodCategory = textViewToChange.getText().toString();
         if(foodCategory.equals("Japanese")){
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, JAPANESE);
+            setContentView(R.layout.display_recipes);
 
-            listView.setAdapter(adapter);
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            CustomListAdapter adapter=new CustomListAdapter(this, JAPANESE, japan_images);
+            list= findViewById(R.id.LIST);
+            list.setAdapter(adapter);
+
+            list.setAdapter(adapter);
+            list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Intent i = null;
                     i = new Intent(DisplayRecipes.this, ShowRecipe.class);
-                    String selectedFoodName = listView.getItemAtPosition(position).toString();
+                    String selectedFoodName = list.getItemAtPosition(position).toString();
                     i.putExtra("food_name", selectedFoodName);
                     startActivity(i);
                 }
             });
         }
         else if(foodCategory.equals("Italian")){
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, ITALIAN);
+            setContentView(R.layout.display_recipes);
 
-            listView.setAdapter(adapter);
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            CustomListAdapter adapter=new CustomListAdapter(this, ITALIAN, italian_images);
+            list = findViewById(R.id.LIST);
+            list.setAdapter(adapter);
+
+            list.setAdapter(adapter);
+            list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Intent i = null;
                     i = new Intent(DisplayRecipes.this, ShowRecipe.class);
-                    String selectedFoodName = listView.getItemAtPosition(position).toString();
+                    String selectedFoodName = list.getItemAtPosition(position).toString();
                     i.putExtra("food_name", selectedFoodName);
                     startActivity(i);
                 }
             });
         }
         else if(foodCategory.equals("Filipino")){
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, FILIPINO);
+            setContentView(R.layout.display_recipes);
 
-            listView.setAdapter(adapter);
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            CustomListAdapter adapter=new CustomListAdapter(this, FILIPINO, filipino_images);
+            list = findViewById(R.id.LIST);
+            list.setAdapter(adapter);
+
+            list.setAdapter(adapter);
+            list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Intent i = null;
                     i = new Intent(DisplayRecipes.this, ShowRecipe.class);
-                    String selectedFoodName = listView.getItemAtPosition(position).toString();
+                    String selectedFoodName = list.getItemAtPosition(position).toString();
                     i.putExtra("food_name", selectedFoodName);
                     startActivity(i);
                 }

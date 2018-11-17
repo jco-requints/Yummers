@@ -2,15 +2,21 @@ package yummers.com;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Layout;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class ShowRecipe extends AppCompatActivity {
 
+    ImageView image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +38,9 @@ public class ShowRecipe extends AppCompatActivity {
         if(foodName.equals("Chicken Teriyaki")){
             String[] INGREDIENTS = {"1 cup soy sauce", "1 cup granulated sugar", "1 1/2 teaspoon brown sugar",
                     "6 gloves garlic, crushed in a press", "2 tablespoon grated fresh ginger"};
+            image = findViewById(R.id.dish);
+            image.setImageResource(R.drawable.teriyaki);
+
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, INGREDIENTS);
             listView.setAdapter(adapter);
         }
@@ -40,6 +49,8 @@ public class ShowRecipe extends AppCompatActivity {
                     "3 tablespoons white sugar", "1 1/2 teaspoons salt", "4 sheets nori seaweed sheets",
                     "1/2 cucumber, peeled, cut into small strips", "2 tablespoons pickled ginger", "1 avocado", "1/2 pound imitation crabmeat, " +
                     "flaked"};
+            image = findViewById(R.id.dish);
+            image.setImageResource(R.drawable.sushi);
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, INGREDIENTS);
             listView.setAdapter(adapter);
         }
@@ -47,6 +58,8 @@ public class ShowRecipe extends AppCompatActivity {
             String[] INGREDIENTS = {"Plain flour: 100g (1Cup)", "Egg: 1",
                     "Cold water: 200cc (1Cup)", "Baking Soda: 1 tea spoon", "Potato Starch: 2 table spoon",
                     "Your choice of vegetables, sea foods and mushrooms", "Oil (Natane oil, sunflower, corn or canola oil)"};
+            image = findViewById(R.id.dish);
+            image.setImageResource(R.drawable.tempura);
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, INGREDIENTS);
             listView.setAdapter(adapter);
         }
@@ -57,6 +70,8 @@ public class ShowRecipe extends AppCompatActivity {
                     "1 tablespoon lime juice, plus extra lime to serve",
                     "4 spring onions, finely sliced on the diagonal",
                     "1/2 cup (125ml) light soy sauce"};
+            image = findViewById(R.id.dish);
+            image.setImageResource(R.drawable.sashimi);
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, INGREDIENTS);
             listView.setAdapter(adapter);
         }
@@ -67,6 +82,8 @@ public class ShowRecipe extends AppCompatActivity {
                     "2 Tbsp olive oil (omit if cooking pizza in a wood-fired pizza oven)",
                     "2 teaspoons salt",
                     "1 teaspoon sugar"};
+            image = findViewById(R.id.dish);
+            image.setImageResource(R.drawable.pizza);
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, INGREDIENTS);
             listView.setAdapter(adapter);
         }
@@ -76,9 +93,80 @@ public class ShowRecipe extends AppCompatActivity {
                     "1 lb. ground pork", "½ cup minced carrots and red peppers", "2 cups diced or thinly sliced hot dogs",
                     "1 cup water", "1 tablespoon salt", "1 teaspoon seasoning mix", "7 ounces evaporated milk",
                     "grated cheese for topping"};
+            image = findViewById(R.id.dish);
+            image.setImageResource(R.drawable.spaghetti);
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, INGREDIENTS);
             listView.setAdapter(adapter);
         }
+        else if(foodName.equals("Lasagna")){
+            String[] INGREDIENTS = {"1 lb. spaghetti noodles", "1 lb. Italian tomato sauce",
+                    "8 ounces tomato paste", "2 tablespoons minced onion", "2 tablespoons minced garlic", "2 tablespoons oil",
+                    "1 lb. ground pork", "½ cup minced carrots and red peppers", "2 cups diced or thinly sliced hot dogs",
+                    "1 cup water", "1 tablespoon salt", "1 teaspoon seasoning mix", "7 ounces evaporated milk",
+                    "grated cheese for topping"};
+            image = findViewById(R.id.dish);
+            image.setImageResource(R.drawable.lasagna);
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, INGREDIENTS);
+            listView.setAdapter(adapter);
+        }
+        else if(foodName.equals("Risotto")){
+            String[] INGREDIENTS = {"1 lb. spaghetti noodles", "1 lb. Italian tomato sauce",
+                    "8 ounces tomato paste", "2 tablespoons minced onion", "2 tablespoons minced garlic", "2 tablespoons oil",
+                    "1 lb. ground pork", "½ cup minced carrots and red peppers", "2 cups diced or thinly sliced hot dogs",
+                    "1 cup water", "1 tablespoon salt", "1 teaspoon seasoning mix", "7 ounces evaporated milk",
+                    "grated cheese for topping"};
+            image = findViewById(R.id.dish);
+            image.setImageResource(R.drawable.risotto);
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, INGREDIENTS);
+            listView.setAdapter(adapter);
+        }
+        else if(foodName.equals("Sinigang na Baboy")){
+            String[] INGREDIENTS = {"1 lb. spaghetti noodles", "1 lb. Italian tomato sauce",
+                    "8 ounces tomato paste", "2 tablespoons minced onion", "2 tablespoons minced garlic", "2 tablespoons oil",
+                    "1 lb. ground pork", "½ cup minced carrots and red peppers", "2 cups diced or thinly sliced hot dogs",
+                    "1 cup water", "1 tablespoon salt", "1 teaspoon seasoning mix", "7 ounces evaporated milk",
+                    "grated cheese for topping"};
+            image = findViewById(R.id.dish);
+            image.setImageResource(R.drawable.sinigang);
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, INGREDIENTS);
+            listView.setAdapter(adapter);
+        }
+        else if(foodName.equals("Pork Sisig")){
+            String[] INGREDIENTS = {"1 lb. spaghetti noodles", "1 lb. Italian tomato sauce",
+                    "8 ounces tomato paste", "2 tablespoons minced onion", "2 tablespoons minced garlic", "2 tablespoons oil",
+                    "1 lb. ground pork", "½ cup minced carrots and red peppers", "2 cups diced or thinly sliced hot dogs",
+                    "1 cup water", "1 tablespoon salt", "1 teaspoon seasoning mix", "7 ounces evaporated milk",
+                    "grated cheese for topping"};
+            image = findViewById(R.id.dish);
+            image.setImageResource(R.drawable.sisig);
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, INGREDIENTS);
+            listView.setAdapter(adapter);
+        }
+        else if(foodName.equals("Chicken Adobo")){
+            String[] INGREDIENTS = {"1 lb. spaghetti noodles", "1 lb. Italian tomato sauce",
+                    "8 ounces tomato paste", "2 tablespoons minced onion", "2 tablespoons minced garlic", "2 tablespoons oil",
+                    "1 lb. ground pork", "½ cup minced carrots and red peppers", "2 cups diced or thinly sliced hot dogs",
+                    "1 cup water", "1 tablespoon salt", "1 teaspoon seasoning mix", "7 ounces evaporated milk",
+                    "grated cheese for topping"};
+            image = findViewById(R.id.dish);
+            image.setImageResource(R.drawable.adobo);
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, INGREDIENTS);
+            listView.setAdapter(adapter);
+        }
+        else if(foodName.equals("Nilagang Baka")){
+            String[] INGREDIENTS = {"1 lb. spaghetti noodles", "1 lb. Italian tomato sauce",
+                    "8 ounces tomato paste", "2 tablespoons minced onion", "2 tablespoons minced garlic", "2 tablespoons oil",
+                    "1 lb. ground pork", "½ cup minced carrots and red peppers", "2 cups diced or thinly sliced hot dogs",
+                    "1 cup water", "1 tablespoon salt", "1 teaspoon seasoning mix", "7 ounces evaporated milk",
+                    "grated cheese for topping"};
+            image = findViewById(R.id.dish);
+            image.setImageResource(R.drawable.nilaga);
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, INGREDIENTS);
+            listView.setAdapter(adapter);
+        }
+
+
+
 
         startService(i);
     }

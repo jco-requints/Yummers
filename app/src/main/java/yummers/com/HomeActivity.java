@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -45,7 +44,7 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(i);
         }
 
-        else if(v.getId()==R.id.list){
+        else if(v.getId()==R.id.shopping_list){
             i = new Intent(HomeActivity.this, ShoppingList.class);
             startActivity(i);
         }
