@@ -3,11 +3,14 @@ package yummers.com;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
 public class ShowRecipe extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +27,7 @@ public class ShowRecipe extends AppCompatActivity {
         }
 
         final ListView listView = (ListView)findViewById(R.id.ingredientsList);
-        String foodName = textViewToChange.getText().toString();
+        final String foodName = textViewToChange.getText().toString();
 
         if(foodName.equals("Chicken Teriyaki")){
             String[] INGREDIENTS = {"1 cup soy sauce", "1 cup granulated sugar", "1 1/2 teaspoon brown sugar",
@@ -77,10 +80,11 @@ public class ShowRecipe extends AppCompatActivity {
             listView.setAdapter(adapter);
         }
 
-
-
-
         startService(i);
     }
+
+
+
+
 
 }
