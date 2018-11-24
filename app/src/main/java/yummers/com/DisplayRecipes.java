@@ -1,15 +1,22 @@
 package yummers.com;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 public class DisplayRecipes extends AppCompatActivity {
@@ -17,6 +24,7 @@ public class DisplayRecipes extends AppCompatActivity {
     ListView list;
     ImageView image;
     TextView text;
+    CustomListAdapter adapter;
     Integer[] japan_images = {R.drawable.teriyaki, R.drawable.sushi, R.drawable.tempura, R.drawable.sashimi};
     Integer[] italian_images = {R.drawable.pizza, R.drawable.spaghetti, R.drawable.lasagna, R.drawable.risotto};
     Integer[] filipino_images = {R.drawable.sinigang, R.drawable.sisig, R.drawable.adobo, R.drawable.nilaga};
@@ -35,6 +43,8 @@ public class DisplayRecipes extends AppCompatActivity {
         Intent i = new Intent(this, YummersService.class);
         Bundle extras = getIntent().getExtras();
 
+        list = (ListView) findViewById(R.id.LIST);
+
         //code for the text if japanese, italian or filipino food...
         TextView textViewToChange = findViewById(R.id.food_category);
         if (extras != null) {
@@ -51,7 +61,7 @@ public class DisplayRecipes extends AppCompatActivity {
             text = findViewById(R.id.food_category);
             text.setText(foodCategory);
 
-            CustomListAdapter adapter=new CustomListAdapter(this, JAPANESE, japan_images);
+            adapter=new CustomListAdapter(this, JAPANESE, japan_images);
             list= findViewById(R.id.LIST);
             list.setAdapter(adapter);
 
@@ -76,7 +86,7 @@ public class DisplayRecipes extends AppCompatActivity {
             text = findViewById(R.id.food_category);
             text.setText(foodCategory);
 
-            CustomListAdapter adapter=new CustomListAdapter(this, ITALIAN, italian_images);
+            adapter=new CustomListAdapter(this, ITALIAN, italian_images);
             list = findViewById(R.id.LIST);
             list.setAdapter(adapter);
 
@@ -101,7 +111,7 @@ public class DisplayRecipes extends AppCompatActivity {
             text = findViewById(R.id.food_category);
             text.setText(foodCategory);
 
-            CustomListAdapter adapter=new CustomListAdapter(this, FILIPINO, filipino_images);
+            adapter=new CustomListAdapter(this, FILIPINO, filipino_images);
             list = findViewById(R.id.LIST);
             list.setAdapter(adapter);
 
@@ -120,10 +130,38 @@ public class DisplayRecipes extends AppCompatActivity {
         }
 
 
-
         startService(i);
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.search_menu, menu);
+        MenuItem item = menu.findItem(R.id.LIST);
+        SearchView searchView = (SearchView)item.getActionView();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                adapter.getFilter().filter(s);
+                return false;
+            }
+        });
+
+        return super.onCreateOptionsMenu(menu);
+
+    }
+
+
+
+
+
 
 
 }
