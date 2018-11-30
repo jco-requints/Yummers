@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "989020890676",
+    "firebase_url": "https://yummers-51317.firebaseio.com",
+    "project_id": "yummers-51317",
+    "storage_bucket": "yummers-51317.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:989020890676:android:b38189c2f676a43b",
+        "android_client_info": {
+          "package_name": "yummers.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "989020890676-n3591kua6jlq8uplk849du6qcnhfomve.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "yummers.com",
+            "certificate_hash": "52ec1312e7650afaa444421a226b234a49523788"
+          }
+        },
+        {
+          "client_id": "989020890676-t1q2rjbnn80pk4t3ej1sarr8e2ua2idl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBU0mkmTKnJcF5IISxMOTla_q9BqFChC5M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "989020890676-t1q2rjbnn80pk4t3ej1sarr8e2ua2idl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
