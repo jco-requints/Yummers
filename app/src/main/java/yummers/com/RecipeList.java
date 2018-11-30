@@ -5,17 +5,11 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.SearchView;
-import android.widget.TextView;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -24,9 +18,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class ShoppingList extends AppCompatActivity {
+public class RecipeList extends AppCompatActivity {
 
     EditText input;
     Button addBtn;
@@ -40,7 +33,7 @@ public class ShoppingList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.shopping_list);
+        setContentView(R.layout.recipe_list);
         Intent i = new Intent(this, YummersService.class);
         Bundle extras = getIntent().getExtras();
 
@@ -48,7 +41,7 @@ public class ShoppingList extends AppCompatActivity {
         addBtn = (Button) findViewById(R.id.addToList);
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Shopping_List");
-        mListView = (ListView) findViewById(R.id.shoppingList);
+        mListView = (ListView) findViewById(R.id.recipeList);
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mShoppingList);
 

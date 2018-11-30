@@ -22,7 +22,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Shopping List"
+        android:text="Recipe List"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/food_field"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,7 +56,7 @@
         app:layout_constraintTop_toBottomOf="@+id/food_field">
 
         <ListView
-            android:id="@+id/shoppingList"
+            android:id="@+id/recipeList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginEnd="8dp"

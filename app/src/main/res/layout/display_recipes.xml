@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/category"
         android:layout_width="0dp"
-        android:layout_height="199dp"
+        android:layout_height="223dp"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/food_name"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,7 +29,7 @@
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/category"
-        app:layout_constraintVertical_bias="0.304" />
+        app:layout_constraintVertical_bias="0.27" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"

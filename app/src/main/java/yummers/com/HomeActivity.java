@@ -45,7 +45,7 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         else if(v.getId()==R.id.shopping_list){
-            i = new Intent(HomeActivity.this, ShoppingList.class);
+            i = new Intent(HomeActivity.this, RecipeList.class);
             startActivity(i);
         }
 
