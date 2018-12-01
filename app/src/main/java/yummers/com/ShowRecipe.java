@@ -1,6 +1,7 @@
 package yummers.com;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -13,10 +14,20 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class ShowRecipe extends AppCompatActivity {
 
     ImageView image;
+
+    ImageButton addBtn;
+
+    private DatabaseReference mDatabase;
+
+    String foodName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +37,11 @@ public class ShowRecipe extends AppCompatActivity {
         Intent i = new Intent(this, YummersService.class);
         Bundle extras = getIntent().getExtras();
 
+        addBtn = (ImageButton)findViewById(R.id.addToListBtn);
+
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Shopping_List");
+
+
         TextView textViewToChange = (TextView) findViewById(R.id.food_name);
         if (extras != null) {
             String str = extras.getString("food_name");
@@ -33,7 +49,7 @@ public class ShowRecipe extends AppCompatActivity {
         }
 
         final ListView listView = (ListView)findViewById(R.id.ingredientsList);
-        final String foodName = textViewToChange.getText().toString();
+        foodName = textViewToChange.getText().toString();
 
         if(foodName.equals("Chicken Teriyaki")){
             String[] INGREDIENTS = {"1 cup soy sauce", "1 cup granulated sugar", "1 1/2 teaspoon brown sugar",
@@ -165,10 +181,22 @@ public class ShowRecipe extends AppCompatActivity {
             listView.setAdapter(adapter);
         }
 
+        addBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDatabase.push().setValue(foodName);
+                displayToast(v);
+            }
+        });
 
 
 
         startService(i);
+    }
+
+
+    public void displayToast(View v){
+        Toast.makeText(this, "Added to List", Toast.LENGTH_LONG).show();
     }
 
 

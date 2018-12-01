@@ -28,16 +28,17 @@
         app:layout_constraintTop_toBottomOf="@+id/dish" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/addToListBtn"
         android:layout_width="73dp"
         android:layout_height="69dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:background="?android:selectableItemBackground"
+        android:onClick="displayToast"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="@+id/dish"
         app:layout_constraintEnd_toEndOf="parent"

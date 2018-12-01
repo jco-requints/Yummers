@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item android:id="@+id/LIST"
-        android:title="Search recipes"
+    <item android:id="@+id/recipeList"
+        android:title="Search Shopping List"
         android:icon="@android:drawable/ic_menu_search"
         app:actionViewClass="android.widget.SearchView"
         app:showAsAction="always">
