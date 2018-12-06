@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class CustomListAdapter extends ArrayAdapter<String> {
 
     private final Activity context;
@@ -21,6 +23,8 @@ public class CustomListAdapter extends ArrayAdapter<String> {
         this.context=context;
         this.itemname=itemname;
         this.imgid=imgid;
+
+
     }
 
     public View getView(int position,View view,ViewGroup parent) {
@@ -37,4 +41,6 @@ public class CustomListAdapter extends ArrayAdapter<String> {
         return rowView;
 
     };
+
+
 }

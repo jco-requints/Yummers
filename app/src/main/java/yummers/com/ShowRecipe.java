@@ -39,7 +39,7 @@ public class ShowRecipe extends AppCompatActivity {
 
         addBtn = (ImageButton)findViewById(R.id.addToListBtn);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("Shopping_List");
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("shopping_list");
 
 
         TextView textViewToChange = (TextView) findViewById(R.id.food_name);
@@ -184,12 +184,10 @@ public class ShowRecipe extends AppCompatActivity {
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mDatabase.push().setValue(foodName);
-                displayToast(v);
+              mDatabase.push().setValue(foodName);
+              displayToast(v);
             }
         });
-
-
 
         startService(i);
     }
@@ -199,6 +197,24 @@ public class ShowRecipe extends AppCompatActivity {
         Toast.makeText(this, "Added to List", Toast.LENGTH_LONG).show();
     }
 
+
+    public void process(View v){
+        Intent i = null, chooser = null;
+
+        if(v.getId()==R.id.shopping_list){
+            i = new Intent(ShowRecipe.this, RecipeList.class);
+            startActivity(i);
+        }
+        else if(v.getId()==R.id.home){
+            i = new Intent(ShowRecipe.this, HomeActivity.class);
+            startActivity(i);
+        }
+
+
+
+
+
+    }
 
 
 

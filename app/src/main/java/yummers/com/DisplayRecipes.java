@@ -34,6 +34,10 @@ public class DisplayRecipes extends AppCompatActivity {
     String[] FILIPINO = {"Sinigang na Baboy", "Pork Sisig", "Chicken Adobo", "Nilagang Baka"};
 
 
+    ImageButton homeBtn;
+    ImageButton searchBtn;
+    ImageButton listBtn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +46,12 @@ public class DisplayRecipes extends AppCompatActivity {
 
         Intent i = new Intent(this, YummersService.class);
         Bundle extras = getIntent().getExtras();
+
+        homeBtn = (ImageButton)findViewById(R.id.home);
+        searchBtn = (ImageButton)findViewById(R.id.search);
+        listBtn = (ImageButton)findViewById(R.id.shopping_list);
+
+
 
         list = (ListView) findViewById(R.id.LIST);
 
@@ -141,6 +151,8 @@ public class DisplayRecipes extends AppCompatActivity {
         MenuItem item = menu.findItem(R.id.LIST);
         SearchView searchView = (SearchView)item.getActionView();
 
+
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
@@ -154,9 +166,29 @@ public class DisplayRecipes extends AppCompatActivity {
             }
         });
 
+
         return super.onCreateOptionsMenu(menu);
 
     }
+
+    public void process(View v){
+        Intent i = null, chooser = null;
+
+        if(v.getId()==R.id.shopping_list){
+            i = new Intent(DisplayRecipes.this, RecipeList.class);
+            startActivity(i);
+        }
+        else if(v.getId()==R.id.home){
+            i = new Intent(DisplayRecipes.this, HomeActivity.class);
+            startActivity(i);
+        }
+        else if(v.getId()==R.id.search){
+
+        }
+
+
+    }
+
 
 
 

@@ -43,7 +43,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/category">
 
-        <ListView
+        <com.baoyz.swipemenulistview.SwipeMenuListView
             android:id="@+id/LIST"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -53,7 +53,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/food_category"
-            app:layout_constraintVertical_bias="1.0"></ListView>
+            app:layout_constraintVertical_bias="1.0">
+
+        </com.baoyz.swipemenulistview.SwipeMenuListView>
     </LinearLayout>
 
     <android.support.constraint.ConstraintLayout

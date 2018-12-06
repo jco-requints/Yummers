@@ -1,27 +1,42 @@
 package yummers.com;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.Toast;
 
+import com.baoyz.swipemenulistview.SwipeMenu;
+import com.baoyz.swipemenulistview.SwipeMenuCreator;
+import com.baoyz.swipemenulistview.SwipeMenuItem;
+import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class RecipeList extends AppCompatActivity {
 
@@ -29,6 +44,9 @@ public class RecipeList extends AppCompatActivity {
     Button addBtn;
     ListView mListView;
     ArrayList<String> mShoppingList = new ArrayList<>();
+    ArrayList<String> mKeyList = new ArrayList<>();
+
+    List<String> foodNameIdList = new ArrayList<>();
 
     ArrayAdapter<String> adapter;
 
@@ -41,10 +59,8 @@ public class RecipeList extends AppCompatActivity {
         Intent i = new Intent(this, YummersService.class);
         Bundle extras = getIntent().getExtras();
 
-        input = (EditText) findViewById(R.id.food_field);
-        addBtn = (Button) findViewById(R.id.addToList);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("Shopping_List");
+        mDatabase = FirebaseDatabase.getInstance().getReference("shopping_list");
         mListView = (ListView) findViewById(R.id.recipeList);
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mShoppingList);
@@ -57,7 +73,10 @@ public class RecipeList extends AppCompatActivity {
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 String value = dataSnapshot.getValue(String.class);
                 mShoppingList.add(value);
+                mKeyList.add(dataSnapshot.getKey());
+
                 adapter.notifyDataSetChanged();
+
             }
 
             @Override
@@ -67,7 +86,12 @@ public class RecipeList extends AppCompatActivity {
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                String string = dataSnapshot.getValue(String.class);
 
+                mShoppingList.remove(string);
+                mKeyList.remove(dataSnapshot.getKey());
+
+                adapter.notifyDataSetChanged();
             }
 
             @Override
@@ -81,24 +105,45 @@ public class RecipeList extends AppCompatActivity {
             }
         });
 
+        mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, final View view, final int position, long id) {
 
-        onBtnClick();
+                AlertDialog.Builder alert = new AlertDialog.Builder(RecipeList.this);
+                alert.setTitle("Delete Item");
+                alert.setMessage("Are you sure you want to delete this recipe from your list?");
+                alert.setPositiveButton(Html.fromHtml("<font color='#00000'>Yes</font>"), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String deletedItem = (mListView.getItemAtPosition(position).toString());
+                        String key = mKeyList.get(position);
+                        mShoppingList.remove(position);
+                        adapter.notifyDataSetChanged();
+                        mDatabase.child(key).removeValue();
+                        displayDeletedToast(view);
+                        dialog.dismiss();
+
+                    }
+                });
+                alert.setNegativeButton(Html.fromHtml("<font color='#00000'>No</font>"), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                alert.show();
+                return true;
+            }
+        });
+
 
         startService(i);
 
     }
 
-    public void onBtnClick(){
-        addBtn.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v){
-                String value =  input.getText().toString();
-                mDatabase.push().setValue(value);
-
-            }
-        });
-
+    public void displayDeletedToast(View v){
+        Toast.makeText(this, "Deleted item from the List", Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -122,6 +167,23 @@ public class RecipeList extends AppCompatActivity {
         });
 
         return super.onCreateOptionsMenu(menu);
+
+    }
+
+    public void process(View v){
+        Intent i = null, chooser = null;
+
+
+        if(v.getId()==R.id.home){
+            i = new Intent(RecipeList.this, HomeActivity.class);
+            startActivity(i);
+        }
+
+
+
+
+
+
 
     }
 
