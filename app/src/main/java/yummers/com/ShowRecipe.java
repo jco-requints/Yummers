@@ -1,5 +1,6 @@
 package yummers.com;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
@@ -33,6 +34,8 @@ public class ShowRecipe extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.show_recipe);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.actionbar2);
 
         Intent i = new Intent(this, YummersService.class);
         Bundle extras = getIntent().getExtras();

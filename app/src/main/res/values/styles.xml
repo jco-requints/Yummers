@@ -11,4 +11,11 @@
         <!--<item name="android:background">#f5dfb0</item>-->
     </style>
 
+    <style name="TextAppearance.AppCompat.Widget.ActionBar.Title" parent="@android:style/TextAppearance">
+        <!-- Customize your theme here. -->
+        <item name="android:fontFamily">@font/arcarter</item>
+        <item name="android:textSize">30dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
 </resources>
