@@ -23,6 +23,8 @@ public class ChecklistAdapter extends ArrayAdapter<String> {
     private final Activity context;
 
 
+
+
     public ChecklistAdapter(Activity context, String[] itemname){
         super(context, R.layout.item_layout, itemname);
 

@@ -4,6 +4,8 @@ import android.app.ActionBar;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Layout;
@@ -17,8 +19,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
 
 public class ShowRecipe extends AppCompatActivity {
 
@@ -29,6 +36,9 @@ public class ShowRecipe extends AppCompatActivity {
     private DatabaseReference mDatabase;
 
     String foodName;
+    ArrayList<String> mShoppingList = new ArrayList<>();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +53,34 @@ public class ShowRecipe extends AppCompatActivity {
         addBtn = (ImageButton)findViewById(R.id.addToListBtn);
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("shopping_list");
+
+        mDatabase.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                String value = dataSnapshot.getValue(String.class);
+                mShoppingList.add(value);
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
 
         TextView textViewToChange = (TextView) findViewById(R.id.food_name);
@@ -187,8 +225,16 @@ public class ShowRecipe extends AppCompatActivity {
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              mDatabase.push().setValue(foodName);
-              displayToast(v);
+
+              if(mShoppingList.contains(foodName)){
+                  displayFailedToast(v);
+              }
+              else {
+                  mDatabase.push().setValue(foodName);
+                  displaySuccessToast(v);
+              }
+
+
             }
         });
 
@@ -196,8 +242,11 @@ public class ShowRecipe extends AppCompatActivity {
     }
 
 
-    public void displayToast(View v){
+    public void displaySuccessToast(View v){
         Toast.makeText(this, "Added to List", Toast.LENGTH_LONG).show();
+    }
+    public void displayFailedToast(View v){
+        Toast.makeText(this, "Food is already added", Toast.LENGTH_LONG).show();
     }
 
 

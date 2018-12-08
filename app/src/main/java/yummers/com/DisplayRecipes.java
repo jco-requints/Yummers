@@ -36,6 +36,11 @@ public class DisplayRecipes extends AppCompatActivity {
     String[] ITALIAN = {"Pizza", "Spaghetti", "Lasagna", "Risotto"};
     String[] FILIPINO = {"Sinigang na Baboy", "Pork Sisig", "Chicken Adobo", "Nilagang Baka"};
 
+    String[] JAPANESE_TIME = {"50min", "30mins", "45mins", "50mins"};
+    String[] ITALIAN_TIME = {"55mins", "40mins", "50mins", "50mins"};
+    String[] FILIPINO_TIME = {"40mins", "55mins", "45mins", "55mins"};
+
+
 
     ImageButton homeBtn;
     ImageButton searchBtn;
@@ -76,7 +81,7 @@ public class DisplayRecipes extends AppCompatActivity {
             text = findViewById(R.id.food_category);
             text.setText(foodCategory);
 
-            adapter=new CustomListAdapter(this, JAPANESE, japan_images);
+            adapter=new CustomListAdapter(this, JAPANESE, JAPANESE_TIME, japan_images);
             list= findViewById(R.id.LIST);
             list.setAdapter(adapter);
 
@@ -101,7 +106,7 @@ public class DisplayRecipes extends AppCompatActivity {
             text = findViewById(R.id.food_category);
             text.setText(foodCategory);
 
-            adapter=new CustomListAdapter(this, ITALIAN, italian_images);
+            adapter=new CustomListAdapter(this, ITALIAN, ITALIAN_TIME, italian_images);
             list = findViewById(R.id.LIST);
             list.setAdapter(adapter);
 
@@ -126,7 +131,7 @@ public class DisplayRecipes extends AppCompatActivity {
             text = findViewById(R.id.food_category);
             text.setText(foodCategory);
 
-            adapter=new CustomListAdapter(this, FILIPINO, filipino_images);
+            adapter=new CustomListAdapter(this, FILIPINO, FILIPINO_TIME, filipino_images);
             list = findViewById(R.id.LIST);
             list.setAdapter(adapter);
 
