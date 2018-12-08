@@ -141,6 +141,19 @@ public class RecipeList extends AppCompatActivity {
         });
 
 
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = null;
+
+                i = new Intent(RecipeList.this, FoodChecklist.class);
+                String selectedFoodName = mListView.getItemAtPosition(position).toString();
+                i.putExtra("checklist_title", selectedFoodName);
+                startActivity(i);
+            }
+        });
+
+
         startService(i);
 
     }
@@ -181,10 +194,6 @@ public class RecipeList extends AppCompatActivity {
             i = new Intent(RecipeList.this, HomeActivity.class);
             startActivity(i);
         }
-
-
-
-
 
 
 

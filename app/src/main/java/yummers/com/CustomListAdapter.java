@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -38,6 +39,10 @@ public class CustomListAdapter extends ArrayAdapter<String> {
         txtTitle.setText(itemname[position]);
         imageView.setImageResource(imgid[position]);
         extratxt.setText("Description "+itemname[position]);
+
+        CheckBox checkBox = rowView.findViewById(R.id.checkbox);
+
+
         return rowView;
 
     };

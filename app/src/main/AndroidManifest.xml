@@ -21,6 +21,8 @@
         <activity android:name=".DisplayRecipes" android:screenOrientation="portrait"></activity>
         <activity android:name=".ShowRecipe" android:screenOrientation="portrait"></activity>
         <activity android:name=".RecipeList" android:screenOrientation="portrait"></activity>
+        <activity android:name=".FoodChecklist" android:screenOrientation="portrait"></activity>
+
 
     </application>
 
