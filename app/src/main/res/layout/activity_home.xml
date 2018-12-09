@@ -67,13 +67,16 @@
             android:id="@+id/shopping_list"
             android:layout_width="72dp"
             android:layout_height="54dp"
+            android:layout_marginEnd="64dp"
+            android:layout_marginLeft="112dp"
+            android:layout_marginRight="64dp"
+            android:layout_marginStart="112dp"
             android:background="?android:selectableItemBackground"
             android:onClick="process"
             android:scaleType="centerInside"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.273"
-            app:layout_constraintStart_toEndOf="@+id/search"
+            app:layout_constraintStart_toEndOf="@+id/home"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/list" />
 
@@ -81,28 +84,17 @@
             android:id="@+id/home"
             android:layout_width="72dp"
             android:layout_height="54dp"
+            android:layout_marginLeft="64dp"
+            android:layout_marginStart="64dp"
             android:background="?android:selectableItemBackground"
             android:cropToPadding="false"
             android:onClick="process"
             android:scaleType="centerInside"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/search"
-            app:layout_constraintHorizontal_bias="0.767"
+            app:layout_constraintEnd_toStartOf="@+id/shopping_list"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/home_icon" />
-
-        <ImageButton
-            android:id="@+id/search"
-            android:layout_width="72dp"
-            android:layout_height="54dp"
-            android:background="?android:selectableItemBackground"
-            android:scaleType="centerInside"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/shopping_list"
-            app:layout_constraintStart_toEndOf="@+id/home"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/search_icon" />
 
     </android.support.constraint.ConstraintLayout>
 

@@ -36,11 +36,9 @@ public class DisplayRecipes extends AppCompatActivity {
     String[] ITALIAN = {"Pizza", "Spaghetti", "Lasagna", "Risotto"};
     String[] FILIPINO = {"Sinigang na Baboy", "Pork Sisig", "Chicken Adobo", "Nilagang Baka"};
 
-    String[] JAPANESE_TIME = {"50min", "30mins", "45mins", "50mins"};
-    String[] ITALIAN_TIME = {"55mins", "40mins", "50mins", "50mins"};
-    String[] FILIPINO_TIME = {"40mins", "55mins", "45mins", "55mins"};
-
-
+    String[] JAPANESE_TIME = {"38min", "45mins", "45mins", "20mins"};
+    String[] ITALIAN_TIME = {"2hrs & 30mins", "25mins", "1hr & 50mins", "45mins"};
+    String[] FILIPINO_TIME = {"2hrs & 10mins", "2hrs", "1hr", "2hrs & 25mins"};
 
     ImageButton homeBtn;
     ImageButton searchBtn;
@@ -58,7 +56,6 @@ public class DisplayRecipes extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
 
         homeBtn = (ImageButton)findViewById(R.id.home);
-        searchBtn = (ImageButton)findViewById(R.id.search);
         listBtn = (ImageButton)findViewById(R.id.shopping_list);
 
 
@@ -191,9 +188,6 @@ public class DisplayRecipes extends AppCompatActivity {
         else if(v.getId()==R.id.home){
             i = new Intent(DisplayRecipes.this, HomeActivity.class);
             startActivity(i);
-        }
-        else if(v.getId()==R.id.search){
-
         }
 
 
